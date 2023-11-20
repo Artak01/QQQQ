@@ -164,3 +164,78 @@ int main(){
     std::cout << "x = " << foo(n);
 }
 
+
+
+
+
+
+*************
+
+#include <iostream> 
+ 
+const char* ary = "$%*"; 
+char n[50];
+ 
+void print(int num, int& x){  
+    if (num == 0){ 
+        return; 
+    } 
+    print(num / 3, x); 
+     
+    n[x] = ary[num % 3];
+    x++;
+ 
+} 
+ 
+int main() 
+{ 
+    int x  = 0;
+    int num = 0;
+    std::cout << "Enter the number: ";
+    std::cin >> num;
+    print(num, x); 
+    std::cout << n;
+ 
+    return 0; 
+}
+
+#include <iostream>
+#include <cstring>
+
+int power(int num, int ex){
+    if (ex <= 0){
+        return 1;
+    }
+    if (num == 0 || num == 1){
+        return num;
+    }
+    int k = 1;
+    for(int i = 0; i < ex; ++i){
+        k *= num;
+    }
+    return k;
+}
+
+int main()
+{
+    char str[20];
+    std::cout << "Enter the number: "; //. $%*
+    std::cin >> str;
+    int size = strlen(str);
+    int num = 0;
+    int k = 0;
+    for(int i = 0; i < size; i++){
+        if (str[size - 1 - i] == 37){
+            num += (1 * power(3, k));
+            k++;
+        } else if (str[size - 1 - i] == 42){
+            num += (2 * power(3, k));
+            k++;
+        } else {
+            k++;
+        }
+    }
+    std::cout << num;
+
+    return 0;
+}
